@@ -16,26 +16,36 @@ public class App {
         System.out.println("Dgite o caminho da imagem: ");
         String path = scan.nextLine();
 
-        Ui.lineSeparator();
-
         startProgram(scan, path);
 
         BufferedImage imagem =  ImageService.openImage(path);
 
-        Ui.lineSeparator();
-        System.out.println("""
+        Ui.lineSeparator(); 
+
+        ImageService.saveImage(imagem,"resources/copia.jpg");
+
+        boolean loop = true;
+
+        while (loop) {
+            System.out.println("""
 
                 Deseja rodar novamente?
 
                 1 - Sim
                 2 - Nao
                 """);
-        int op = scan.nextInt();
-        if (op == 1){
-            startProgram(scan, path);
-        }
+            int op = scan.nextInt();
 
-        ImageService.saveImage(imagem,"resources/copia.jpg");
+            if (op == 1){
+                System.out.println("iniciou");
+             startProgram(scan, path);
+            }else {
+                loop = false;
+                System.exit(0);
+            }
+        }
+       
+      
     }
 
     public static void startProgram(Scanner scan,String path) throws IOException {
@@ -43,5 +53,6 @@ public class App {
         System.out.println("Escolha a opcão desejada:");
         Ui.menu();
         Ui.chooseAction(path,scan.nextInt(), scan);
+        
     }
 }
