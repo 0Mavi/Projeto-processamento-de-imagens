@@ -6,6 +6,7 @@ import java.util.Scanner;
 import services.ImageService;
 import switches.BWSwitches;
 import switches.BrightnessSwitches;
+import switches.MeanSwitches;
 import switches.PixelSwitches;
 import switches.RGBSwitches;
 
@@ -21,7 +22,8 @@ public class Ui {
                 2 - Filtros rgb
                 3 - Preto e branco filtros
                 4 - Brilho
-                5 - sair
+                5 - Media e mediana
+                6 - sair
                 """);
     }
 
@@ -76,6 +78,16 @@ public class Ui {
                 6 - Voltar
                 """);
     }; 
+
+    public static void menuMean(){
+        System.out.println("""
+                Escolha uma opção:
+
+                1 - Media
+                2 - Mediana
+                3 - Voltar
+                """);
+    }
     
     public static void chooseAction (String path, int value, Scanner scan) throws IOException{
       
@@ -105,7 +117,13 @@ public class Ui {
                 ImageService.displayImage(BrightnessSwitches.brightnessOption(path, op, scan));
                 break;
 
-            case 5:
+            case 5: 
+                menuMean();
+                op = scan.nextInt();
+                ImageService.displayImage(MeanSwitches.meanOptions(path, value, scan));
+
+
+            case 6:
                 System.exit(0);
                 break;
         

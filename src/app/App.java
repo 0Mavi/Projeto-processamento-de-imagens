@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Dgite o caminho da imagem: ");
+        System.out.println("Digite o caminho da imagem: ");
         String path = scan.nextLine();
 
         startProgram(scan, path);
